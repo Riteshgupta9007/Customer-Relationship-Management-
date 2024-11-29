@@ -1,0 +1,46 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="admin/adminparent::layout(~{::section})">
+  <head></head>
+  <body>
+    <section>
+    	<h2 class="text-center text-light">Add New Product</h2>   
+    	<div th:if="${message}">
+    	<p th:text="${message}" class="alert alert-success alert-dismissable"></p>
+    	</div> 
+    	<form class="form-group" method="post" th:object="${productDao}" enctype="multipart/form-data">
+    	<table class="table table-bordered text-light" style="width:60%;margin:auto">
+    	<tr>
+    	<td>Enter product name</td>
+    	<td>
+    	<input class="form-control text-light" required th:field="${productDao.productname}"/>
+    	</td>
+    	</tr>
+    		<tr>
+    	<td>Enter product price</td>
+    	<td>
+    	<input type="number" class="form-control text-light" required th:field="${productDao.price}"/>
+    	</td>
+    	</tr>
+    	<tr>
+    	<td>Enter Description</td>
+    	<td>
+    	<textarea class="form-control text-light" required th:field="${productDao.description}"></textarea>
+    	</td>
+    	</tr>
+    	<tr>
+    	<td>Select Product Image</td>
+    	<td>
+    	<input type="file" required class="form-control" th:field="${productDao.imagefile}"/>
+    	</td>
+    	</tr>
+    	<tr>
+    	<td></td>
+    	<td>
+    		<button type="submit" class="btn btn-success">Add Product</button>
+    	</td>
+    	</tr>
+    	</table>
+    	</form>
+    </section>
+  </body>
+</html>

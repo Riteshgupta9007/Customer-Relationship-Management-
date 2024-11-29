@@ -1,0 +1,78 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head></head>
+<body>
+	<section>
+		<h2 class="text-center text-primary">Customer Registration</h2>
+		<div th:if="${message}">
+			<p th:text="${message}" class="alert alert-success alert-dismissible"></p>
+		</div>
+		<div class="row">
+			<div class="col-md-8 mx-auto rounded border p-4 m-4">
+				<form th:object="${customerDao}" method="post">
+					<div class="row mb-3">
+						<label class="col-sm-4 col-form-label">Enter Name</label>
+						<div class="col-sm-8">
+							<input class="form-control" th:field="${customerDao.name}" />
+							<p th:if="${#fields.hasErrors('name')}"
+								th:errorClass="text-danger" th:errors="${customerDao.name}"></p>
+						</div>
+					</div>
+					<div class="row mb-3">
+						<label class="col-sm-4 col-form-label">Select Gender</label>
+						<div class="col-sm-8">
+							<input type="radio" th:field="${customerDao.gender}"
+								class="form-check-input" value="Male" />Male <input
+								type="radio" th:field="${customerDao.gender}"
+								class="form-check-input" value="Female" />Female
+						</div>
+					</div>
+					<div class="row mb-3">
+						<label class="col-sm-4 col-form-label">Enter Address</label>
+						<div class="col-sm-8">
+							<textarea th:field="${customerDao.address}" class="form-control"></textarea>
+							<p th:if="${#fields.hasErrors('address')}"
+								th:errorClass="text-danger" th:errors="${customerDao.address}"></p>
+						</div>
+					</div>
+					<div class="row mb-3">
+						<label class="col-sm-4 col-form-label">Enter Contact No</label>
+						<div class="col-sm-8">
+							<input type="number" class="form-control"
+								th:field="${customerDao.contactno}" />
+							<p th:if="${#fields.hasErrors('contactno')}"
+								th:errorClass="text-danger" th:errors="${customerDao.contactno}"></p>
+						</div>
+					</div>
+					<div class="row mb-3">
+						<label class="col-sm-4 col-form-label">Enter Email Address</label>
+						<div class="col-sm-8">
+							<input type="email" class="form-control"
+								th:field="${customerDao.emailaddress}" />
+							<p th:if="${#fields.hasErrors('emailaddress')}"
+								th:errorClass="text-danger"
+								th:errors="${customerDao.emailaddress}"></p>
+						</div>
+					</div>
+					<div class="row mb-3">
+						<label class="col-sm-4 col-form-label">Enter Password</label>
+						<div class="col-sm-8">
+							<input type="password" class="form-control"
+								th:field="${customerDao.password}" />
+							<p th:if="${#fields.hasErrors('password')}"
+								th:errorClass="text-danger" th:errors="${customerDao.password}"></p>
+						</div>
+					</div>
+					<div class="row mb-3">
+						<div class="col-sm-4"></div>
+						<div class="col-sm-8">
+							<button type="submit" class="btn btn-primary">Register</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
